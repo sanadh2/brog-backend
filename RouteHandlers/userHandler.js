@@ -109,6 +109,7 @@ const signin = async (req, res, next) => {
     samSite: "lax",
   });
 
+  console.log("success");
   return res.status(200).json({
     success: true,
     token: userToken,
@@ -120,7 +121,7 @@ const verification = async (req, res, next) => {
   if (!cookie)
     return res
       .status(400)
-      .json({ success: false, msg: "could not get enough credentials" });
+      .json({ success: false, msg: "could not get enough credentials now" });
   const token = cookie.split("=")[1];
 
   JWT.verify(String(token), process.env.PRIVATE_KEY, (err, user) => {
