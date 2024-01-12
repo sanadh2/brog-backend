@@ -106,7 +106,7 @@ const signin = async (req, res, next) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 120),
     httpOnly: true,
-    samSite: "lax",
+    sameSite: "lax",
   });
 
   console.log("success");
