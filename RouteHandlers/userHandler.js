@@ -106,7 +106,9 @@ const signin = async (req, res, next) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 120),
     httpOnly: true,
-    sameSite: "lax",
+    // sameSite: "lax",
+    sameSite: "none",
+    secure: true,
   });
   return res.status(200).json({
     success: true,
@@ -177,7 +179,9 @@ const refreshToken = async (req, res, next) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 69),
       httpOnly: true,
-      sameSite: "lax",
+      // sameSite: "lax",
+      sameSite: "none",
+      secure: true,
     });
     req.id = user.id;
     next();
