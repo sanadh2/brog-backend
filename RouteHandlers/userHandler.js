@@ -108,8 +108,6 @@ const signin = async (req, res, next) => {
     httpOnly: true,
     sameSite: "lax",
   });
-
-  console.log("success");
   return res.status(200).json({
     success: true,
     token: userToken,
