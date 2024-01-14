@@ -113,11 +113,13 @@ const getFollowingBlogs = async (req, res, next) => {
       .json({ success: false, msg: "could not get userID" });
 
   const user = await userModel.findById(userID);
-  const followingBlogs = await blogModel.find({
-    authorID: { $in: user.following },
-  });
+  const followingBlogs = await blogModel
+    .find({
+      authorID: { $in: user.following },
+    })
+    .populate("authorID");
 
-  res.status(200).json({ success: true, followingBlogs, following: user });
+  res.status(200).json({ success: true, followingBlogs });
 };
 
 const getSingleBlog = async (req, res, next) => {

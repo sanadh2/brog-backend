@@ -31,9 +31,7 @@ userRoute.patch("/update-user", updateUser);
 userRoute.post("/signout", signout);
 
 userRoute.get("/search-users/:search", userList);
-
 userRoute.use(isAdmin);
-
 userRoute.delete("/:userID", deleteUser);
 userRoute.delete("/", deleteEveryOne);
 userRoute.patch("/ban-user", banUser);
