@@ -64,6 +64,11 @@ const userSchema = new Schema(
       default: [],
     },
     isBanned: { type: Boolean, default: false },
+    reports: {
+      type: [mongoose.Schema.Types.ObjectId],
+      default: [],
+      ref: "blog",
+    },
   },
   { timestamps: true }
 );

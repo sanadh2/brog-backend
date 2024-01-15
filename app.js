@@ -15,10 +15,14 @@ const { userRoute } = require("./Routes/userRoutes");
 const morgan = require("morgan");
 const routeNotFound = require("./ErrorHandlers/routeNotFound");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 app.use(
   cors({
-    origin: ["http://localhost:1111", "http://localhost"],
+    origin: [
+      "http://localhost:1111",
+      "http://localhost",
+      "https://blog-seven-murex-36.vercel.app",
+      "https://blog-d8ij0i9id-sanadh-a-ns-projects.vercel.app",
+    ],
     credentials: true,
   })
 );

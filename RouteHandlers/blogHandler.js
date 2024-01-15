@@ -115,9 +115,10 @@ const getFollowingBlogs = async (req, res, next) => {
   const user = await userModel.findById(userID);
   const followingBlogs = await blogModel
     .find({
-      authorID: { $in: user.following },
+      $or: [{ authorID: { $in: user.following } }, { authorID: userID }],
     })
-    .populate("authorID");  
+    .populate("authorID")
+    .sort("-createdAt");
 
   res.status(200).json({ success: true, followingBlogs });
 };
@@ -198,6 +199,12 @@ const reportBlog = async (req, res, next) => {
       .status(404)
       .json({ success: false, msg: "Could not find the blog" });
 
+  await userModel.findByIdAndUpdate(userID, {
+    $addToSet: {
+      reports: blogID,
+    },
+  });
+
   const notification = new notificationModel({
     title: "report",
     message: "reported",
@@ -212,7 +219,8 @@ const reportBlog = async (req, res, next) => {
       $addToSet: {
         notifications: notification._id,
       },
-    }
+    },
+    { new: true }
   );
   res.status(200).json({ success: true, blog });
 };
