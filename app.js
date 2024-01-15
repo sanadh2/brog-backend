@@ -21,7 +21,7 @@ app.use(
       "http://localhost:1111",
       "http://localhost",
       "https://blog-seven-murex-36.vercel.app",
-      "https://blog-d8ij0i9id-sanadh-a-ns-projects.vercel.app",
+      "https://vercel.live/link/blog-8u6b1xgfr-sanadh-a-ns-projects.vercel.app?via=deployment-domains-list-commit",
     ],
     credentials: true,
   })
