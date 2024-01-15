@@ -117,7 +117,7 @@ const getFollowingBlogs = async (req, res, next) => {
     .find({
       authorID: { $in: user.following },
     })
-    .populate("authorID");
+    .populate("authorID");  
 
   res.status(200).json({ success: true, followingBlogs });
 };

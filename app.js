@@ -18,7 +18,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 app.use(
   cors({
-    origin: ["http://192.168.1.7:1111", "http://localhost"],
+    origin: ["http://localhost:1111", "http://localhost"],
     credentials: true,
   })
 );
